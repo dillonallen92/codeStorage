@@ -19,10 +19,10 @@ Vector2d accelerationVector(const float&m, const Vector2d&F)
 }
 
 // This takes the weight on a flat surface and gives it an incline, for basic incline problems
-Vector2d angledWeight(const Vector2d&W, const float&a)
+Vector2d angledWeight(const float&m, const float&a)
 {
+    Vector2d W = weightVector(m);
     return Vector2d(W.x*cos(a), W.y*sin(a));
-
 }
 
 // This calculates work done over a distance d

@@ -7,7 +7,7 @@ Vector2d weightVector(const float&m, const Vector2d&a);
 
 Vector2d accelerationVector(const float&m, const Vector2d&F);
 
-Vector2d angledWeight(const Vector2d&W, const float&a);
+Vector2d angledWeight(const float&m, const float&a);
 
 float WorkDone(const Vector2d&F, const Vector2d&d);
 
