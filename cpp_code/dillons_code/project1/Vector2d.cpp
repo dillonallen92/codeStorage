@@ -29,7 +29,10 @@
     {
         return Vector2d(x - a.x, y - a.y);
     }
-
+    
+    /*
+        TODO: Fix this equality statement 
+    */
     bool Vector2d::operator==(const Vector2d&a) const 
     {
         (x == a.x && y == a.y) ? true : false;
