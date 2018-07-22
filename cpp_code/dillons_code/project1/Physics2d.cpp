@@ -6,6 +6,31 @@
 // Vector for gravity in just y
 Vector2d g = Vector2d(0,-9.81);
 
+/* 
+    Added position and init velocity just for completion
+    These are just Vector2d instances, nothing special
+*/
+
+Vector2d positionVector(const float&x, const float&y)
+{
+    return Vector2d(x,y);
+}
+
+Vector2d initVelocity(const float&x, const float&y)
+{
+    return Vector2d(x,y);
+}
+
+Vector2d updatedPosition(const Vector2d&x, const Vector2d&v, const float &t)
+{
+    return (x + v*t);
+}
+
+Vector2d updatedPosition_a(const Vector2d&x, const Vector2d&v, const Vector2d&a, const float&t)
+{
+    return (x + v*t + a* pow(t, 2));
+}
+
 // This uses mass and multiplies it by gravity going down on the y
 Vector2d weightVector(const float&m)
 {
