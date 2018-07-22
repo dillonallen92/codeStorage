@@ -3,10 +3,12 @@
 #include <cmath>
 #include <cfloat>
 
+// Vector for gravity in just y
+Vector2d g = Vector2d(0,-9.81);
+
 // This uses mass and multiplies it by gravity going down on the y
 Vector2d weightVector(const float&m)
 {
-    Vector2d g = Vector2d(0,-9.81);
     return g*m;
 }
 
