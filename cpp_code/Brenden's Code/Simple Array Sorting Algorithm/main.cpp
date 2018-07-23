@@ -8,7 +8,7 @@ int getRandomNumber(int min,int max, int previousSeed) {
 	std::srand(static_cast<unsigned int>(std::time(0)) + previousSeed);
 	std::rand();
 
-	//create a fraction that will always put the number returned by rand() between 0-1
+	//create a fraction that will let you distribute the random onto your range
 	static const double fraction = (1.0 / (RAND_MAX + 1.0));  //note, if the 1.0's are not exactly "1.0" it messes up
 	//get the range that we are guessing int
 	int range = abs(max - min) + 1;
