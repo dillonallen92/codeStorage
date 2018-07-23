@@ -1,3 +1,8 @@
+//IMPORTANT NOTE:
+//This program uses a variable length array. In standard C++ this will not compile :(
+//This will compile using the G++ compiler which allows c# extensions in c++, thus containing the variable length array
+//In c++ a dynamic array is needed. 
+
 #include <iostream>
 #include <cstdlib> // for rand() and srand()
 #include <ctime>   // for std::time
