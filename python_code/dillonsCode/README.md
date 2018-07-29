@@ -1,0 +1,1 @@
+Collection of notes and small programs in python
