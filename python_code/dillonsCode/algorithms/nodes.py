@@ -1,5 +1,7 @@
 # this is taken from a website on algorithms
 
+'''
+
 # example code here
 
 class daynames:
@@ -37,3 +39,13 @@ while thisvalue:
     thisvalue = thisvalue.nextval
 
 # example code end
+
+'''
+
+# Adding Nodes class to use on later projects
+
+class Node:
+    
+    def __init__(self, dataval=None):
+        self.dataval = dataval
+        self.nextval = None
