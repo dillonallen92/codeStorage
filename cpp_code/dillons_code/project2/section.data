@@ -1,0 +1,139 @@
+section.data    ; define constants
+num1: equ 100   ; equ - does not take up any register memory
+num2: equ 50    ; initialize message
+msg: db "sum is correct\n"
+
+commands in assembly:
+add - integer addition
+sub - integer subtraction
+mul - unsigned integer multiplication (positive ints only)
+imul - signed integer multiplication (pos and neg)
+div - unsigned division (for integers)
+idiv - signed division (for integers)
+
+flow control:
+je - if equal
+jz - if equal to zero
+jne - if not equal to
+jnz - if not equal to zero
+jg - if first operand is greater than the second 
+jge - first is greater than or equal to
+ja - same as jg but for unsigned comparisons
+jae - same as jge but for unsigned comparisons
+
+procedures:
+.proc_name
+    .
+    .
+    .   #body
+    .
+return
+
+; to call the procedure use
+; call name
+
+Thursday Oct 11 (Midterm)
+boolean algebra, Karnaugh Maps, Assembly Language
+Open Note, Open Book
+
+10 - 2 - 18
+
+Take home midterm given October 4th
+Due October 16th.
+
+Program for today:
+Reverse the string
+ex : Hello World
+
+Using the concepts of the stack, LIFO (last in first out).
+
+Use a pointer to point to H. Move H onto the stack and then move the pointer down the
+string (spaces are characters as well)
+
+Setup
+
+
+section.data                ; initializes constants
+
+    sys_write equ 1 
+    std_out equ 1
+    sys_exit equ 60         ; syscall commands
+    exit_code equ 0         ; '               ' 
+    new_line db 0xa         ; hexidecimal equivalent of 10, newline character \n
+    input db "Hello World"  ; string we want to reverse 
+
+section.bss                 ; declares variables
+
+    output resb 12          ; residual buffer to store the reverse string 
+
+section.text
+_start:                     ; entry point
+
+    mov rsi, input          ; input contained the string. Put pointer to Hello World 
+                            ; to rsi register
+
+    xor rcx, rcx            ; xor command. Stores 0 in the rcx register
+
+    cld                     ; clears the destination flag (df) and the df flag will 
+                            ; either be at the beginning or end of the string. 
+                            ; When you clear the df using the cld command, it puts 
+                            ; the flag at the beginning of the string
+    
+    mov rdi, $+15           ; skip for now (read the comments below)
+
+    call calculateStrLength ; calls the calculate string length function
+
+    xor rax, rax            ; sets rax to 0
+    xor rdi, rdi            ; sets rdi to 0 
+    jmp reverseStr
+
+calculateStrLength          ; function
+
+    cmp rsi, 0              ; compare the rsi register to 0
+
+    je exitfromRoutine      ; if rsi is 0 then we know we counted all chars in string
+                            ; so we exit the function
+
+    lodsb                   ; loads the string, puts it into the 'al' register
+                            ; (part of the rax register) and changes the rsi pointer
+                            ; recall that the cld command clears the rsi flag
+                            ; lodsb will move the rsi flag (pointer) from left to 
+                            ; right across the string (character to character)
+
+    push rax                ; pushes or puts the character value of rax on the stack
+
+    inc rcx                 ; increment rax pointer so that it points to the next
+                            ; character in the string
+
+    jmp calculateStrLength  ; goes back to the top and starts again (recursive)
+
+; General comments before moving on...
+; After exiting the calculateStrLength function, we need to return to the correct
+; place in section.text (our main) to continue with the execution of the program
+; line 6 was "call calculateStrLength" and the next line was "xor rax, rax"
+; this places a flag, which happens to be on the bottom of the stack 
+; to allow the CPU to find the place in section.text to continue the execution
+; that is what line 5 is for
+; $ stores the location of the function return
+; $+15 adds 15 bytes to that location
+; why 15 bytes?
+; the "mov rdi $+15" takes up 10 bytes and the function call takes up 5 bytes
+; the location of line 6 is now stored in the rdi register
+
+; reverse string function below
+
+reverseStr
+
+    cmp rcx, 0
+
+    je PrintResult
+
+    pop rax
+
+    mov [output+rdi], rax
+
+    dec rcx
+
+    inc rdi
+
+    jmp reverseStr
