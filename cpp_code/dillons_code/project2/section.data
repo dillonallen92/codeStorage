@@ -137,3 +137,98 @@ reverseStr
     inc rdi
 
     jmp reverseStr
+
+; printResult function below
+
+printResult:
+    mov rdx, rdi
+    mov rax, 1
+    mov rdi, 1
+    mov rsi, OUTPUT         ; output contained the reversed string, dlroW olleH
+    syscall
+    jmp printNewLine
+
+; printNewLine below
+
+printNewLine:
+    mov rax, sys_write
+    mov rdi, std_out
+    mov rsi, new_line
+    mov rdx, 1
+    syscall
+    jmp exit
+
+; exit defined
+
+exit:
+    mov rax, sys_exit
+    mov rdi, exit_code
+    syscall
+
+
+general register locations:
+EBD, ESP ...
+they are stack pointers, so they point somewhere in the stack
+
+mov - move instruction syntax
+mov [operand], [operand]   general form
+mov [register], [register] ex: mov rsi, rbd
+mov [register], constant   ex: rax, 12
+mov [memory], constant     ex: mov [output+rdi],12   ; square brackets indicate pointer
+mov [register], [memory]
+mov [memory], [register]
+
+Architecture: x86 32 or 64 bit.
+If you are looking at examples online you need to know what kind of Architecture the
+assembly code is written for
+
+Two different major types of assembly code:
+    1. AT&T                 ; source, destination, register prefix %, constant/literal
+                            ; prefix is the $, 
+    2. Intel                ; destination, source, no register prefix, no constant/
+                            ; literal prefix, 
+
+example:
+    mov rdi, rax            ; rdi is the source and is copied into the rax register (AT&T)
+    mov rdi, rax            ; rax is copied into the rdi register (Intel)
+
+operation examples:
+
+ex:
+
+    mov rcx, rax            ; copy the value of rax into the rci register
+
+can we do this without using the mov operator?
+
+solution:
+
+    push rax
+    pop rcx
+
+addition:
+
+    mov rax, 11             ; stores 11 into the rax register
+    mov rcx, 500            ; stores 500 into the rcx register
+    add rax, rcx            ; stores 511 into the rax register
+
+subtraction:
+
+    mov r15, 1337
+    mov r12, 55
+    sub r15, r12            ; r15 = r15-r12 = 1282 
+
+multiplication:
+
+    mov rax, 50
+    mov rcx, 12
+    mul rcx                 ; multiplication always uses the value in the rax register
+                            ; along with the value in the operand and stores the result
+                            ; in rax. Therefore rax = 600
+
+division:
+
+    mov rax, 800
+    mov rbx, 100
+    div rbx                 ; Division always uses the rax register and the operand
+                            ; as the divisor, and stores back into the rbx register
+                            ; rbx = rax / rbx 
