@@ -231,4 +231,83 @@ division:
     mov rbx, 100
     div rbx                 ; Division always uses the rax register and the operand
                             ; as the divisor, and stores back into the rbx register
-                            ; rbx = rax / rbx 
+                            ; rbx = rax / rbx
+
+
+10/9/2018 notes
+
+Midterm: #3 change 
+add ebx, [x]
+
+to 
+
+add ebx, [y]
+
+
+Loops in C:
+
+int i;
+for( i = 1; i <= 10; i++)
+{
+    //do something
+}
+
+Assembly branching
+    two types, jumps and function calls
+    branching allows us to redirect program flow, we do this with comparisons (cmp)
+
+lets do the same loop in assembly!
+
+loop:
+
+    mov ax, 0
+
+    add ax, 1
+
+    cmp ax, 10
+
+    jmp somewhereElse
+
+Another form of branching is a function call
+
+section.text
+    .
+    .
+    .
+    .
+    call Function11
+    .
+    .
+    .
+    .
+    Function11:
+        .
+        .
+        .
+        .
+        ret 
+
+The Stack: ( Last In First Out) (LIFO)
+
+the statement
+    mov ax, bx
+
+has the same effect as 
+    push ax
+    pop bx
+
+Jump instruction:
+    jmp <label>             ; transfer program control to some other section of the 
+                            ; program 
+
+    cmp ax, bx
+    je <label>              ; jump if equal (ax = bx)
+    jne <label>             ; jump if not equal
+    jz <label>              ; jump if last result is zero
+    jg <label>              ; jump if bx is greater than ax 
+    jge <label>             ; jump if greater than or equal to 
+    jl <label>              ; jump if less than 
+    jle <label>             ; jump if less than or equal to 
+
+
+    
