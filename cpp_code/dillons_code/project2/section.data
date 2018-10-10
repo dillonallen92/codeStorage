@@ -309,5 +309,80 @@ Jump instruction:
     jl <label>              ; jump if less than 
     jle <label>             ; jump if less than or equal to 
 
+C If/Else:
 
-    
+    if ( ax != 50)
+    {
+        exit();
+    } else 
+    {
+        right();
+    }
+
+in Assembly:
+
+    cmp ax, 50
+    jne ax, 50
+        .exit
+    je right
+      .right
+
+To exit an assembly program...
+
+    mov ax, 50
+    mov di, 1
+    syscall
+
+Problem: Write an asm program to add two integers 100 and 50 and compare the sum
+to a predetermined value. If predetermined is equal to value print something out
+else, exit
+
+
+section.text
+    mov ax, num1
+    mov bx, num2
+    add ax, bx
+    cmp ax, 200
+        .exit()
+    cmp ax, 150
+    call rightSum
+
+;print message
+    mov ax, 1
+    mov di, 1
+    mov si, msg
+    mov dx, 15              ; length of message in bytes
+    syscall
+    .exit
+
+Procedures in assembly language are equivalent to functions in higher level languages
+
+To define a procedure, you list it as the name of the procedure and then followed by
+PROC 
+    name PROC
+        .
+        .
+        .
+        .
+        ;do something 
+    ret                     ; return
+    ENDP                    ; Defines the end of the procedure
+
+By convention, in higher level languages the function parameters can be passed by value
+or by reference.
+
+passed by value: the computer makes another copy of the variable/parameter to use in
+                 the function
+
+passed by reference: the compiler only passes the address of where the parameter is 
+                     to the function, no copy 
+
+Pass by Value:
+    push var1
+    push var2
+    call action1
+
+Pass by reference:
+    push offset var1
+    push offset var2
+    call action1
