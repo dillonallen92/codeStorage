@@ -39,17 +39,3 @@ int mult( int val1, int val2)
 	return c;
 }
 
-
-
-/*
-__asm__(
-	"_sum:;"
-	"		push %rbp;"
-	"		movq %rsp, %rbp;"
-	"		movq 4(%rbp), %rax;"
-	"		addq 8(%rbp), %rax;"
-	"		movq %rbp, %rsp;"
-	"		pop %rbp;"
-	"		ret"
-);
-*/
