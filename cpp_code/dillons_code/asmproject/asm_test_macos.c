@@ -7,8 +7,13 @@ int main(void)
 	int op1 = 50;
 	int op2 = 70;
 
+    // Basic Mathematical operations
+
 	printf("%d + %d = %d\n", op1, op2, sum(op1, op2));
 	printf("%d * %d = %d\n", op1, op2, mult(op1, op2));
+    
+    // Hello World test
+    /* TODO: Write hello world code */
 	return 0;
 }
 
@@ -38,4 +43,3 @@ int mult( int val1, int val2)
 	
 	return c;
 }
-
