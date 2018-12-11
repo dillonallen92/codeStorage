@@ -1,12 +1,6 @@
-// Power2_inline_asm.c
-// compile with: /EHsc
-// processor: x86
-
 #include <stdio.h>
-
 // timing library and functions
 #include <time.h>
-
 // math library
 #include <math.h>
 
