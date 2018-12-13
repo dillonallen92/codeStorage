@@ -3,7 +3,7 @@
     Written by Dillon Allen 
     December 12th, 2018
 
-    Using test file 
+    Using test file: StudentsPerformance.csv 
 '''
 
 # Imports
