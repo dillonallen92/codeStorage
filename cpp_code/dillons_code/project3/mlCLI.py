@@ -106,11 +106,7 @@ def EDA(fileName=""):
             print("\n --- Sending back to File Manager Menu --- \n")
             FileManager()
     if (yninput == 'n'):
-        FileManager()
-    
-
-def optionTwo():
-    print("option Two")
+        FileManager() 
 
 def optionThree():
     print("option Three")
