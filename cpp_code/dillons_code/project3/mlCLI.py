@@ -86,10 +86,15 @@ def EDA(fileName=""):
                     if pltYN == 'y':
                         val1 = input("\nEnter categorical value 1: ")
                         val2 = input("\nEnter categorical value 2: ")
-                        plt.scatter(df[:][val1], df[:][val2])
-                        plt.xlabel(val1)
-                        plt.ylabel(val2)
-                        plt.show()
+                        try:
+                            plt.scatter(df[:][val1], df[:][val2])
+                            plt.xlabel(val1)
+                            plt.ylabel(val2)
+                            plt.title(val1 + " vs " + val2)
+                            plt.show()
+                        except:
+                            print("\n --- Invalid value parameters: check the following for misspellings: " + val1 + " , " + val2 + " ---\n")
+                            print("\n --- Note: You may have added extra spaces. --- \n")
                 doneYet = input("\nAre you done yet? ( y / n ): ")
                 if (doneYet == 'y'):
                     done = True
