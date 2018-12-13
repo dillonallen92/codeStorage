@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+from pandas.plotting import scatter_matrix
 
 # Globals
 
@@ -62,11 +63,15 @@ def EDA(fileName):
         while ( done == False ):
             print("1. Display head of dataframe")
             print("2. Display dataframe sumamry")
+            print("3. Display the scatter matrix")
             uInput = input("What would you like to see? ")
             if (uInput == '1'):
                 print(df.head())
             if (uInput == '2'):
                 print(df.describe())
+            if (uInput == '3'):
+                scatter_matrix(df, alpha = 0.2)
+                plt.show()
             doneYet = input("Are you done yet? ( y / n ): ")
             if (doneYet == 'y'):
                 done = True
