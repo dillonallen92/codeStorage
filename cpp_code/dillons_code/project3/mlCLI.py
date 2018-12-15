@@ -4,6 +4,12 @@
     December 12th, 2018
 
     Using test file: StudentsPerformance.csv 
+    TODO:
+        1. Improve Features list (query, create other df's, etc)
+        2. Access Kaggle for more test files
+        3. Implement basic linear regression
+        4. Add one hot encoding
+
 '''
 
 # Imports
