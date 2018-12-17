@@ -19,11 +19,14 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 from pandas.plotting import scatter_matrix
+import cv2
 
 # Globals
 
 fileName = ""
 userInput = ""
+
+# File Manager Function
 
 def FileManager():
     fileName = ""
@@ -59,7 +62,9 @@ def FileManager():
                     EDA(fileName)
                 if (yninput == 'n'):
                     FileManager()
-            
+
+# EDA Function
+
 def EDA(fileName=""):
     if fileName == "":
         FileManager()
@@ -114,15 +119,61 @@ def EDA(fileName=""):
     if (yninput == 'n'):
         FileManager() 
 
+# Machine Learning Function
+
 def optionThree():
     print("option Three")
+
+# OpenCVClass Function
+
+def OpenCVFunction():
+    userInput = ""
+    print("\n --- OpenCV Playground --- \n")
+    print("1. Open Camera with Edge Detection")
+    print("2. Open Facial Detection (Haar Cascade)")
+    userInput = input("\nSelect your option: ")
+    if (userInput == "1"):
+        openCamEdgeDetect()
+    if (userInput == "2"):
+        openCamFacialRec()
+
+# Canny Edge
+
+def LiveCamEdgeDetection_Canny(image_color):
+    threshold_1 = 30
+    threshold_2 = 80
+    image_gray = cv2.cvtColor(image_color, cv2.COLOR_BGR2GRAY)
+    canny = cv2.Canny(image_gray, threshold_1, threshold_2)
+    return canny
+
+# OpenCamEdgeDetect Function
+
+def openCamEdgeDetect():
+    cap = cv2.VideoCapture(0) # Capture from main webcam ( in case more )
+
+    while True:
+        ret, frame = cap.read()
+        cv2.imshow('Live Edge Detection', LiveCamEdgeDetection_Canny(frame))
+        cv2.imshow('Webcam Video', frame)
+        if cv2.waitKey(1) == 13:
+            break
+    cap.release()
+    cv2.destroyAllWindows()      
+
+# openCamFacialRec() Function
+
+def openCamFacialRec():
+    print("Soon to come")
+
+# Main Function
 
 def main():
     print("\n --- Machine Learning Command Line Interface --- \n")
     print("1. File Manager ")
     print("2. EDA ")
-    print("3. Option 3")
-    print("4. Quit")
+    print("3. Machine Learning Options")
+    print("4. OpenCV functions")
+    print("5. Quit")
 
     userInput = input("\nWhat would you like to do? ")
 
@@ -132,7 +183,9 @@ def main():
         EDA()
     if ( userInput == "3" ):
         optionThree()
-    if ( userInput == "4" ):
+    if (userInput == "4"):
+        OpenCVFunction()
+    if ( userInput == "5" ):
         print("\n --- Exiting Program --- \n")
         SystemExit
 
