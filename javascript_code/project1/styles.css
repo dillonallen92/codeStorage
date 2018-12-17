@@ -1,0 +1,21 @@
+.titleContainer
+{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: White;
+    background: black;
+}
+
+#bookList
+{
+    list-style-type: none;
+}
+
+#bookList li
+{
+    text-align: center;
+    size: 15px;
+    color: white;
+    padding: 20px;
+    background: grey;
+    margin-bottom: 5px;
+}
