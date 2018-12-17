@@ -163,7 +163,7 @@ def openCamEdgeDetect():
 # openCamFacialRec() Function
 
 def openCamFacialRec():
-    print("Soon to come")
+    print()
 
 # Main Function
 
