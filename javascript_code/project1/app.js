@@ -1,8 +1,11 @@
+// Initialize the library array
 var myLibrary = [];
 
+// Add a couple test books into the array
 myLibrary[0] = "The Philosophy of WestWorld";
 myLibrary[1] = "Metaphors and the words we live by";
 
+// Set bookList as a global variable to append to
 var bookList = document.getElementById("bookList");
 
 function displayLibrary()
@@ -54,3 +57,15 @@ function addToList(bookName)
 
 // Get the code to load 
 window.onload = displayLibrary();
+
+// Added code to listen for Enter to input a book
+var input = document.getElementById("addBook");
+input.addEventListener("keyup", function(event) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Trigger the button element with a click
+      document.getElementById("addBtn").click();
+    }
+  });
