@@ -34,6 +34,9 @@ else if ((mikesTeamAverage > johnsTeamAverage) && (mikesTeamAverage > marysTeamA
 {
     console.log("Mikes team average is the highest");
 }
-else{
+else if ((marysTeamAverage > mikesTeamAverage) && (marysTeamAverage > johnsTeamAverage)){
     console.log("Marys is the highest");
+}
+else{
+    console.log("There is a draw");
 }
