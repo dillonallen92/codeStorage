@@ -55,6 +55,11 @@ function addToList(bookName)
     bookList.appendChild(node);
 }
 
+function removeBook()
+{
+    
+}
+
 // Get the code to load 
 window.onload = displayLibrary();
 
