@@ -1,13 +1,5 @@
 // score array
 
-var scores, roundScores, activePlayer, dice;
-
-scores = [0,0];
-roundScores = 0;
-activePlayer = 0;
-
-
-document.querySelector("#current-0").textContent = dice;
 
 /*
 function rollDice()
@@ -29,24 +21,34 @@ function player (activePlayer, score, onHold)
     this.activePlayer = activePlayer;
     this.score = score;
     this.onHold = onHold;
-    this.rollDice = function (){
+    this.rollDice = function () {
         dice = Math.floor(Math.random()*6) + 1;
+        return dice;
     };
 }
 
 
-    var playerOne = new player(true, 0, false);
-    var playerTwo = new player(false, 0, true);
+    var playerOne = new player(true, parseInt(0.0), false);
+    var playerTwo = new player(false, parseInt(0.0), true);
+    document.querySelector("#current-0").textContent = 0;
+    document.querySelector("#current-1").textContent = 0;
 
     function gameRoll()
     {
-        while( playerOne.onHold === false)
+        if ( playerOne.onHold === false)
         {
-            playerOne.score = playerOne.score + playerOne.rollDice();
+            dice = playerOne.rollDice();
+            playerOne.score = playerOne.score + dice;
+            console.log(dice);
+            diceURL = "dice-" + dice + ".png";
+            console.log(diceURL);
+            document.getElementById("dice").src = diceURL;
+            document.querySelector("#current-0").textContent = playerOne.score;
         }
-        while ( playerTwo.onHold === false)
+        if (playerTwo.onHold === false)
         {
             playerTwo.score = playerTwo.score + playerTwo.rollDice();
+            document.querySelector("#current-1").textContent = playerTwo.score;
         }
     }
 
@@ -55,12 +57,16 @@ function player (activePlayer, score, onHold)
         if (playerOne.onHold === false)
         {
             playerOne.onHold = true;
+            playerTwo.onHold = false;
             document.querySelector("#score-0").textContent = playerOne.score;
+            document.querySelector("#current-0").textContent = 0;
         }
         else
         {
             playerTwo.onHold = true;
+            playerOne.onHold = false;
             document.querySelector("#score-1").textContent = playerTwo.score;
+            document.querySelector("#current-1").textContent = 0;
         }
     }
 
