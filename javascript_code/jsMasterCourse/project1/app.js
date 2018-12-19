@@ -23,14 +23,18 @@ function player (activePlayer, score, onHold)
 
     var playerOne = new player(true, parseInt(0.0), false);
     var playerTwo = new player(false, parseInt(0.0), true);
+    var playerOneOldScore = 0;
+    var playerTwoOldScore = 0;
     document.querySelector("#current-0").textContent = 0;
     document.querySelector("#current-1").textContent = 0;
+    document.querySelector("#score-0").textContent = 0;
+    document.querySelector("#score-1").textContent = 0;
 
     function gameRoll()
     {
         if ( playerOne.onHold === false)
         {
-            dice = playerOne.rollDice();
+            let dice = playerOne.rollDice();
             playerOne.score = playerOne.score + dice;
             console.log(dice);
             diceURL = "dice-" + dice + ".png";
@@ -40,8 +44,14 @@ function player (activePlayer, score, onHold)
         }
         if (playerTwo.onHold === false)
         {
-            playerTwo.score = playerTwo.score + playerTwo.rollDice();
+            let dice = playerTwo.rollDice();
+            playerTwo.score = playerTwo.score + dice;
+            console.log(dice);
+            diceURL = "dice-" + dice + ".png";
+            console.log(diceURL);
+            document.getElementById("dice").src = diceURL;
             document.querySelector("#current-1").textContent = playerTwo.score;
+            
         }
     }
 
@@ -64,3 +74,14 @@ function player (activePlayer, score, onHold)
     }
 
 
+function newGame()
+{
+    document.querySelector("#score-0").textContent = 0;
+    document.querySelector("#score-1").textContent = 0;
+    document.querySelector("#current-0").textContent = 0;
+    document.querySelector("#current-1").textContent = 0;
+
+    playerOne.score = 0;
+    playerTwo.score = 0;
+
+}
