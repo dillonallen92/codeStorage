@@ -1,19 +1,12 @@
 // score array
 
 
-/*
-function rollDice()
-{
-    dice = Math.floor(Math.random() *6) + 1;
-    diceURL = "dice-" + dice + ".png";
-    document.getElementById("dice").src = diceURL;
-    console.log("rolldice clicked, rolled a " + dice + " with diceURL of: " + diceURL);
-    if (activePlayer === 0)
-    { 
-        document.querySelector("#current-0").textContent = dice;
-    }
-}
-*/
+/**
+ * TODO: 1. Get proper increments
+ * 2. Proper mechanics of rolling 1
+ * 3. Winner determined.
+ * 4. Move dot for current player and background color transition
+ */
 
 // Create an Object for Player One
 function player (activePlayer, score, onHold)
