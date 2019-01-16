@@ -15,18 +15,23 @@
 
 int main()
 {
-    // create a seed for random number
     // Solution to 1
+
+    // Create a seed for the random numbers
     srand(time(NULL));
-    int arr[10] { 0 };
+
+    // Initialize the array of size 10 with 10 zeros
+    int arr[10] { 0 }; 
+
     for(int i = 0; i < 10; i++)
-        arr[i] = 2*abs((rand()%50))+2;
+        arr[i] = 2*abs((rand()%50))+2; 
     for (auto num : arr )
         std::cout << num << " at address " << &num << std::endl;
 
     std::cout << "-------------------------" << std::endl;
 
     // Solution to 2
+    
     int* aPtr = arr;
     for(int i = 0; i < 10; i ++)
         std::cout << *(aPtr + i) << " at address " << aPtr + i << std::endl;
