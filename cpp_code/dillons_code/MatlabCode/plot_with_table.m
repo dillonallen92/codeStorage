@@ -10,3 +10,7 @@ Table = [t', x', y'];
 disp('    ')
 disp('    Time (s)    x(m)     y(m)' )
 disp( Table )
+plot(x,y)
+title( 'Position in X vs Y')
+xlabel('X position')
+ylabel('Y position')
