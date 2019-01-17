@@ -7,6 +7,8 @@
 */
 
 #include <iostream>
+#include <string>
+
 template <class T>
 T getMin(T a, T b);
 
@@ -19,18 +21,21 @@ int main()
     std::cout << "Compare two ints (23 vs -65). Min: " << getMin(23, -65) << ". Max: " << getMax(23, -65) << '\n';
     std::cout << "Compare two doubles (2.4, -2.7). Min: " << getMin(2.4, -2.7) << ". Max: " << getMax(2.4, -2.7) << '\n';
     std::cout << "Compare two chars (c, f). Min: " << getMin('c', 'f') << ". Max: " << getMax('c', 'f') << '\n';
-    std::cout << "Compare two strings (brenden, dumb). Min: " << getMin("brenden", "dumb") << ". Max: " << getMax("brenden", "dumb") << '\n';
+    std::cout << "Compare two strings (zebra, beach). Min: " << getMin(static_cast<std::string>("zebra"), static_cast<std::string>("beach")) << ". Max: " << getMax("zebra", "beach") << '\n';
     return 0;
 }
 
 template <class T>
 T getMin(T a, T b)
 {
-    return((a < b) ? a : b);
+    if( a > b )
+        return b;
+    return(a);
 }
 
 template <class T>
 T getMax(T a, T b)
-{
-    return((a > b) ? a : b);
+{   if ( a > b )
+        return a;
+    return(b);
 }
