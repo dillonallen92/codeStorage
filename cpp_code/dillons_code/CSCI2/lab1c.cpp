@@ -16,10 +16,10 @@ T getMax(T a, T b);
 int main()
 {
     
-    std::cout << "Compare two ints (23 vs -65). Min: " << getMin(23, -65) << ". Max: " << getMax(23, -65);
-    std::cout << "Compare two doubles (2.4, -2.7). Min: " << getMin(2.4, -2.7) << ". Max: " << getMax(2.4, -2.7);
-    std::cout << "Compare two chars (c, f). Min: " << getMin('c', 'f') << ". Max: " << getMax('c', 'f');
-    std::cout << "Compare two strings (brenden, dumb). Min: " << getMin("brenden", "dumb") << ". Max: " << getMax("brenden", "dumb");
+    std::cout << "Compare two ints (23 vs -65). Min: " << getMin(23, -65) << ". Max: " << getMax(23, -65) << '\n';
+    std::cout << "Compare two doubles (2.4, -2.7). Min: " << getMin(2.4, -2.7) << ". Max: " << getMax(2.4, -2.7) << '\n';
+    std::cout << "Compare two chars (c, f). Min: " << getMin('c', 'f') << ". Max: " << getMax('c', 'f') << '\n';
+    std::cout << "Compare two strings (brenden, dumb). Min: " << getMin("brenden", "dumb") << ". Max: " << getMax("brenden", "dumb") << '\n';
     return 0;
 }
 

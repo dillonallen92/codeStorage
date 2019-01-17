@@ -25,8 +25,8 @@ int main()
 
     for(int i = 0; i < 10; i++)
         arr[i] = 2*abs((rand()%50))+2; 
-    for (auto num : arr )
-        std::cout << num << " at address " << &num << std::endl;
+    for (int i = 0; i < 10; i++)
+        std::cout << arr[i] << " at address " << &arr[i] << std::endl;
 
     std::cout << "-------------------------" << std::endl;
 
