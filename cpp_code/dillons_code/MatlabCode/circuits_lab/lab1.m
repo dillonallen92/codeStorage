@@ -15,11 +15,13 @@ currents470 = [0, 4.1, 8.7, 13, 17.5, 21.9, 26.4];
 % Plot both together
 fit470 = polyfit(currents470, volts470,1);
 fit470poly = polyval(fit470, currents470);
+fprintf('The slope of the 470 ohm fit is: %9.3f\n', fit470(1))
 plot(currents470, volts470, 'o', currents470, fit470poly, '-')
 
 hold on
 
 fit2k = polyfit(currents2k, volts2k, 1);
+fprintf('The slope of the 2.2k Ohm resistor is: %9.3f\n', fit2k(1))
 fit2kpoly = polyval(fit2k, currents2k);
 plot(currents2k, volts2k, 'o', currents2k, fit2kpoly, '-')
 title( ' 470 Ohm and 2.2k Ohm Resistor ' )
