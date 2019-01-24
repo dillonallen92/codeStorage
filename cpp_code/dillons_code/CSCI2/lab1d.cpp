@@ -14,64 +14,72 @@
 #include <iostream>
 #include <string>
 
-template < class T1 ,class T2, class T3, class T4>
+template <class T1, class T2, class T3>
 class Student
 {
 private:
-    T2 score1;
-    T3 score2;
-    T4 score3;
-    T1 studentName;
-    float w1 = 0.2, w2 = 0.2 , w3 = 0.6;
+    T1 score1;
+    T2 score2;
+    T3 score3;
+    std::string studentName;
+    float w1 = 0.2;
+    float w2 = 0.2;
+    float w3 = 0.6;
 public:
-    Student(T1, T2, T3, T4);
-    T1 getName();
-    T2 getScore1();
-    T3 getScore2();
-    T4 getScore3();
+    Student(std::string name, T1 s1, T2 s2, T3 s3);
+    std::string getName();
+    T1 getScore1();
+    T2 getScore2();
+    T3 getScore3();
     float weightedAverage();
 };
 
 int main()
 {
-    Student< std::string, double, double, double> john("john", 63.0, 43.0, 70.1);
+    Student<double, float, int> john("john", 63.7, 43.4, 70);
     std::cout << "Student name is: " << john.getName() << "\n";
     std::cout << john.getName() << "'s test score 1 is: " << john.getScore1() << "\n";
     std::cout << john.getName() << "'s test score 2 is: " << john.getScore2() << "\n";
     std::cout << john.getName() << "'s test score 3 is: " << john.getScore3() << "\n";
-    std::cout << john.getName() << "'s weighted test average is: " << john.weightedAverage(); 
+    std::cout << john.getName() << "'s weighted test average is: " << john.weightedAverage() << "\n"; 
     return 0;
 }
 
-template <class T1, class T2, class T3, class T4>
-T1 Student<T1, T2, T3, T4>::getName()
+template <class T1, class T2, class T3>
+Student<T1, T2, T3>::Student(std::string name, T1 s1, T2 s2, T3 s3)
+{
+    studentName = name;
+    (s1 < 0) ? (score1 = 0) : (score1 = s1);
+    (s2 < 0) ? (score2 = 0) : (score2 = s2);
+    (s3 < 0) ? (score3 = 0) : (score3 = s3);
+}
+
+template <class T1, class T2, class T3>
+std::string Student<T1, T2, T3>::getName()
 {
     return (studentName);
 }
 
-template <class T1, class T2, class T3, class T4>
-T2 Student<T1, T2, T3, T4>::getScore1()
+template <class T1, class T2, class T3>
+T1 Student<T1, T2, T3>::getScore1()
 {
     return (score1);
 }
 
-template <class T1, class T2, class T3, class T4>
-T3 Student<T1, T2, T3, T4>::getScore2()
+template <class T1, class T2, class T3>
+T2 Student<T1, T2, T3>::getScore2()
 {
     return (score2);
 }
 
-template <class T1, class T2, class T3, class T4>
-T4 Student<T1, T2, T3, T4> :: getScore3()
+template <class T1, class T2, class T3>
+T3 Student<T1, T2, T3> :: getScore3()
 {
     return (score3);
 }
 
-template <class T1, class T2, class T3, class T4>
-float Student<T1, T2, T3, T4>::weightedAverage()
+template <class T1, class T2, class T3>
+float Student<T1, T2, T3>::weightedAverage()
 {
-    T2 t1 = score1;
-    T3 t2 = score2;
-    T4 t3 = score3;
-    return ((w1*t1 + w2*t2 + w3*t3));
+    return( w1*score1 + w2*score2 + w3*score3);
 }
