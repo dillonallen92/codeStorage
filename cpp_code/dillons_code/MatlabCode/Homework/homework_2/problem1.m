@@ -9,6 +9,10 @@ n = length(v);
 U = repmat(u, m, 1);
 V = repmat(v', 1, n);
 
+% Note to self
+% [U,V] = meshgrid(u,v);
+% Does everything repmat would do but do not need to calculate length (it seems)
+
 X = ( c + a * cos(V)).*cos(U);
 Y = ( c + a * cos(V)).*sin(U);
 Z = a*sin(V);
