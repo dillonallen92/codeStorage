@@ -1,0 +1,4 @@
+image = imread('aliens.jpg');
+imshow(image);
+axis image
+title('ALIENSSSSSSSS"
