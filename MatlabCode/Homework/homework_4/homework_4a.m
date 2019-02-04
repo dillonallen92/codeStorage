@@ -1,3 +1,4 @@
+% Dillon Allen
 % Create a script to print the table of values for a Lemniscate of Bernoulli
 % Create a subfunction to handle creating the x and y values
 % Include a local function to print the table of values with theta, x, y

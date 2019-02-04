@@ -1,3 +1,6 @@
+% Dillon Allen
+% Create the function as the total script
+
 function homework_4b(a)
     global a;
     global theta;
