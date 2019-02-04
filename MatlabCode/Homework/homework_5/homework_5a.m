@@ -1,3 +1,4 @@
+% Dillon Allen
 % Plot an epitrochoid and print a table of values for an epitrochoid using cell arrays. 
 % Create a function to print the table and use the function to print the table.
 % Plot the curve. (similar to section 1.16)

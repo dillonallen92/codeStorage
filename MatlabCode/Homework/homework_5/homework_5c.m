@@ -1,3 +1,4 @@
+% Dillon Allen
 % Build a GUI that will show the Epitrochoid and handle user input for a, b, h
 
 clear
@@ -27,7 +28,10 @@ function pushbuttonCallback(pushButton, ~)
     [X Y] = createEpitrochoid(a,b,h);
 
     comet(X,Y);
-    
+
+    % plot(X,Y, 'r')
+    % Comet is a lot cooler to look at
+
     function [U V] = createEpitrochoid(a,b,h)
         U = (a+b) * cos(t) - h * cos( ((a + b) / b) *t );
         V = (a+b) * sin(t) - h * sin( ((a + b) / b) *t );
