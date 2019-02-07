@@ -2,7 +2,6 @@
 % Create the function as the total script
 
 function homework_4b(a)
-    global a;
     global theta;
     theta = -2*pi : pi / 64 : 2*pi;
     disp('This is a function that prints out the value of a table');
