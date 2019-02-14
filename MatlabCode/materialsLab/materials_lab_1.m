@@ -24,10 +24,16 @@ p = sqrt( 2 * m * e * v);
 
 lambda = h / p ;
 
-fprintf('Momentum is %10.35f\n', p);
-fprintf('Wavelength is %10.35f\n', lambda);
+% Kinetic Energy
 
-% Diameter values
+K = p^2 / (2 * m);
+
+fprintf('The Kinetic Energy is %10.35f nJ \n', K*1E9);
+fprintf('Momentum is %10.35f kg*m/s \n', p);
+fprintf('Wavelength is %10.35f nm \n', lambda*1E9);
+
+
+% Diameter values for circles 1 - 5
 
 d1 = [.02164 .02087 .02200 .02150];
 d2 = [.02509 .02441 .02594 .02515];
@@ -36,7 +42,8 @@ d4 = [.04038 .04219 .04135 .04131];
 d5 = [.05683 .05689 .05704 .05692];
 
 % Average the diameters before calculation
-d1_avg = sum(d1)/length(d1);
+
+d1_avg = sum(d1) / length(d1);
 d2_avg = sum(d2) / length(d2);
 d3_avg = sum(d3) / length(d3);
 d4_avg = sum(d4) / length(d4);
@@ -45,6 +52,8 @@ d5_avg = sum(d5) / length(d5);
 % Array of diameters
 
 d_avg = [d1_avg, d2_avg, d3_avg, d4_avg, d5_avg];
+
+% Length from target to screen (in meters)
 
 l = .182;
 
