@@ -8,3 +8,6 @@ y = linspace(0,2,40);
 [ X Y K ] = meshgrid(x,y,k);
 Z = sum( (32/(4*pi)) * sin(K*pi/4)./K.^2 .* sin(K .* X * pi) .* cos(K .* Y * pi), 3);
 mesh(x,y,Z);
+
+% You are awesome buddy! You are speed! kachaow, We must take the ring and throw it in the pits of the spicy water
+% of the mountain
