@@ -7,8 +7,10 @@ function [posScore, compScore, neutScore, negScore] = vader_analyzer_matlab(sent
     % Other scripts will be written to test and plot the results.
 
     % Check to see if it works by displaying the sentence back, in lower case
+    disp(' ');
     sentence = lower(sentence);
     disp(sentence);
+    disp(' ');
 
     % Using the mean positive sentiment score from the original work
     pos_inc = 0.293;
@@ -48,6 +50,7 @@ function [posScore, compScore, neutScore, negScore] = vader_analyzer_matlab(sent
         disp('The given sentence has an overall negative sentiment');
     end
 
+    disp('  ');
     disp(['The positive sentiment score of the above sentence is ', num2str(posScore)]);
     disp(['The compound sentiment score of the above sentence is ', num2str(compScore)]);
     disp(['The neutral sentiment score of the above sentence is ', num2str(neutScore)]);
