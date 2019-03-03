@@ -96,7 +96,6 @@ if __name__ == "__main__":
     dateArray = []
     valueArray = []
     highValues = []
-
     while(beginProgram):
 
         print("\n---------- Menu ----------\n")
