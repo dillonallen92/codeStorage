@@ -30,9 +30,28 @@ Once we find the type that is HKQuanitityType, we want the dict values of 'value
 dateArray = []
 valueArray = []
 
+
+for i in range(len(root)):
+    if (root[i].get('type') == 'HKQuantityTypeIdentifierHeartRate'):
+        dateArray.append(root[i].attrib['startDate'])
+        valueArray.append(float(root[i].attrib['value']))
+
+print(len(valueArray))
+
+'''
+dateArray = []
+valueArray = []
+
+First way to filter
+
 for i in range(0,25019):
     dateArray.append(root[15+i].attrib['startDate'])
     valueArray.append(float(root[15+i].attrib['value']))
+
+
+# Second filter technique
+
+
 
 firstDate = dateArray[0]
 lastDate = dateArray[-1]
@@ -71,7 +90,7 @@ while(uInput != 'n'):
     highValues = []
     uInput = input("Continue? (n to cancel)")
 
-'''
+
 xPlot = range(totalData)
 plt.plot(xPlot, valueArray)
 plt.title('All data points (~ 3 months)')
