@@ -40,6 +40,7 @@ print(len(valueArray))
 '''
 
 # Now I will query the instantaneous heart rate
+# It has a record inside a record that also has an element that then can be queried for attributes
 
 for i in range(len(root)):
     if(root[i].get('type') == 'HKQuantityTypeIdentifierHeartRateVariabilitySDNN'):
