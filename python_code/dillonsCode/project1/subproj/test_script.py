@@ -30,13 +30,21 @@ Once we find the type that is HKQuanitityType, we want the dict values of 'value
 dateArray = []
 valueArray = []
 
-
+'''
 for i in range(len(root)):
     if (root[i].get('type') == 'HKQuantityTypeIdentifierHeartRate'):
         dateArray.append(root[i].attrib['startDate'])
         valueArray.append(float(root[i].attrib['value']))
 
 print(len(valueArray))
+'''
+
+# Now I will query the instantaneous heart rate
+
+for i in range(len(root)):
+    if(root[i].get('type') == 'HKQuantityTypeIdentifierHeartRateVariabilitySDNN'):
+        print(next(iter(root[i][:][0])).attrib)
+        print(" ")
 
 '''
 dateArray = []
