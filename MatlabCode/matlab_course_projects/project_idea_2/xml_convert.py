@@ -4,7 +4,6 @@ import collections
 
 def convertXMLtoDict(file):
 
-
         tree = ET.parse(file)
         root = tree.getroot()
 
