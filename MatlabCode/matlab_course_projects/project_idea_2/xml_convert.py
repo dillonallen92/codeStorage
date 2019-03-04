@@ -21,4 +21,4 @@ def convertXMLtoDict(file):
 if __name__ == '__main__':
         xmlFileName = sys.argv[1]
         myDict = convertXMLtoDict(xmlFileName)
-        sys.stdout.write(myDict)
+        sys.stdout.write(str(myDict))
