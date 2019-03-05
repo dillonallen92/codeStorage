@@ -44,8 +44,13 @@ print(len(valueArray))
 
 for i in range(len(root)):
     if(root[i].get('type') == 'HKQuantityTypeIdentifierHeartRateVariabilitySDNN'):
-        print(next(iter(root[i][:][0])).attrib)
+        print(root[i].attrib)
         print(" ")
+        for record in root[i][:]:
+                print(next(iter(record)))
+        # print(next(iter(root[i][:])).attrib)
+        # print(" ")
+
 
 '''
 dateArray = []
