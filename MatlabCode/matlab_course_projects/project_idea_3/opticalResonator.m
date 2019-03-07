@@ -34,6 +34,7 @@ while tryAgain
 
 end
 
+% Function has void output because we are just interested in the plot
 function plotSFRBifurcation(frameCount, C, kappaScale, Pmax)
 
     % Instantiate variables
