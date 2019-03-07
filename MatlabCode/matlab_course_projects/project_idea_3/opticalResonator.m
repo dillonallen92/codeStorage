@@ -31,7 +31,7 @@ while tryAgain
     else
         tryAgain = false;
     end
-
+    clc, close all;
 end
 
 % Function has void output because we are just interested in the plot
@@ -74,8 +74,7 @@ function plotSFRBifurcation(frameCount, C, kappaScale, Pmax)
         end
 
         % Plot the bifurcation diagrams 
-        fsize=15;
-        hold 
+        hold; 
         plot(ptsup(1:halfN), Esqr(1:halfN), '.', 'MarkerSize', 1, 'Color', 'r');
         plot(ptsup(1:halfN), Esqr1(1:halfN), '.', 'MarkerSize', 1, 'Color', 'b');
         xlabel('Input power');
@@ -83,5 +82,6 @@ function plotSFRBifurcation(frameCount, C, kappaScale, Pmax)
         title('Bifurcation diagram for an Optical Resonator');
     end
 
-    movie(F,5)
+    movie(F, 1);
+    %implay(F)
 end
