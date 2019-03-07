@@ -21,6 +21,7 @@ while tryAgain
         frameCount = input('Enter the amount of frames you wish to run (typical is 60): ');
     end
 
+    % Pass into function
     plotSFRBifurcation(frameCount, C, kappaScale, Pmax);
 
     uInput = input('Would you like to try again? (y/n) ', 's');
