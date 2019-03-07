@@ -2,6 +2,7 @@ import xml.etree.ElementTree as ET
 import re
 import matplotlib.pyplot as plt
 import collections
+import pandas as pd
 
 tree = ET.parse('export.xml')
 root = tree.getroot()
@@ -30,13 +31,19 @@ Once we find the type that is HKQuanitityType, we want the dict values of 'value
 dateArray = []
 valueArray = []
 
-'''
+
+
+
 for i in range(len(root)):
     if (root[i].get('type') == 'HKQuantityTypeIdentifierHeartRate'):
         dateArray.append(root[i].attrib['startDate'])
         valueArray.append(float(root[i].attrib['value']))
 
 print(len(valueArray))
+
+
+
+
 '''
 
 # Now I will query the instantaneous heart rate
@@ -50,9 +57,9 @@ for i in range(len(root)):
                 print(next(iter(record)))
         # print(next(iter(root[i][:])).attrib)
         # print(" ")
-
-
 '''
+'''
+
 dateArray = []
 valueArray = []
 
