@@ -3,6 +3,8 @@ import re
 import matplotlib.pyplot as plt
 import collections
 import pandas as pd
+import datetime
+import seaborn as sns
 
 tree = ET.parse('export.xml')
 root = tree.getroot()
@@ -29,6 +31,7 @@ Once we find the type that is HKQuanitityType, we want the dict values of 'value
 # Now try to collect data in x(date) and y(heartrate)
 
 dateArray = []
+timeArray = []
 valueArray = []
 
 
@@ -39,11 +42,38 @@ for i in range(len(root)):
         dateArray.append(root[i].attrib['startDate'])
         valueArray.append(float(root[i].attrib['value']))
 
-print(len(valueArray))
+print(dateArray[1][11:19])
+
+# Grab the times from each date (still in string form)
+
+for k in range(len(dateArray)):
+        timeArray.append(dateArray[k][:19])
+print(timeArray)
+print(" ")
 
 
 
+# Now try to do the whole array with a for each loop
+parsedTimeArray = []
+parsedTimeArray = [datetime.datetime.strptime(myDate, '%Y-%m-%d %H:%M:%S') for myDate in timeArray]
+print(parsedTimeArray)
+print(" ")
+# parsedDateArray = [datetime.datetime.strptime(myDate,'%Y-%m-%d %H:%M:%S').time() for myDate in dateArray]
+# print(parsedTimeArray)
 
+# plt.plot(parsedTimeArray, valueArray)
+# plt.show()
+
+# Try to format plot with seaborn (sns)
+fig, ax = plt.subplots()
+
+ax.plot(parsedTimeArray, valueArray)
+
+plt.setp(ax.get_xticklabels(), rotation=45)
+
+ax.set(xlabel = "Date", ylabel="bmp")
+
+plt.show()
 '''
 
 # Now I will query the instantaneous heart rate
