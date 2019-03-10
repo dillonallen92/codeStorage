@@ -5,6 +5,7 @@ import collections
 import pandas as pd
 import datetime
 import seaborn as sns
+import statistics
 
 tree = ET.parse('export.xml')
 root = tree.getroot()
@@ -47,23 +48,45 @@ print(dateArray[1][11:19])
 # Grab the times from each date (still in string form)
 
 for k in range(len(dateArray)):
-        timeArray.append(dateArray[k][:19])
+        timeArray.append(dateArray[k][11:19])
 print(timeArray)
 print(" ")
 
+newDateArray = []
+# Grab the dates from each string
+for k in range(len(dateArray)):
+        newDateArray.append(dateArray[k][:10])
+print(newDateArray)
 
+dateAndTimeArray = []
+for k in range(len(dateArray)):
+        dateAndTimeArray.append(dateArray[k][:19])
 
+# Parse date array
+parsedDateArray = []
+parsedDateArray = [datetime.datetime.strptime(mydate, '%Y-%m-%d').date() for mydate in newDateArray]
+print(parsedDateArray)
+print(" ")
 # Now try to do the whole array with a for each loop
 parsedTimeArray = []
-parsedTimeArray = [datetime.datetime.strptime(myDate, '%Y-%m-%d %H:%M:%S') for myDate in timeArray]
+parsedTimeArray = [datetime.datetime.strptime(myDate, '%H:%M:%S').time() for myDate in timeArray]
 print(parsedTimeArray)
 print(" ")
-# parsedDateArray = [datetime.datetime.strptime(myDate,'%Y-%m-%d %H:%M:%S').time() for myDate in dateArray]
+parsedTotalDateArray = [datetime.datetime.strptime(myDate,'%Y-%m-%d %H:%M:%S') for myDate in dateAndTimeArray]
 # print(parsedTimeArray)
+print(parsedDateArray[0])
+print(parsedTimeArray[0])
+
+heartRateDF = pd.DataFrame({"Date": parsedDateArray, "Time": parsedTimeArray, "BPM Value": valueArray, "Date_Time": parsedTotalDateArray})
+print(heartRateDF.head())
+print(" ")
+
+# Test a query for BPM over 180
+print(heartRateDF.loc[heartRateDF['BPM Value'] > 180])
 
 # plt.plot(parsedTimeArray, valueArray)
 # plt.show()
-
+'''
 # Try to format plot with seaborn (sns)
 fig, ax = plt.subplots()
 
@@ -74,6 +97,8 @@ plt.setp(ax.get_xticklabels(), rotation=45)
 ax.set(xlabel = "Date", ylabel="bmp")
 
 plt.show()
+'''
+
 '''
 
 # Now I will query the instantaneous heart rate

@@ -30,7 +30,7 @@ function [posScore, compScore, neutScore, negScore] = vader_analyzer_matlab(sent
     negWordsList = {'almost', 'barely', 'hardly', 'just enough', 'kind of', 'kinda', 'kindof', 'kind-of', ...
                     'less', 'little', 'marginally', 'occasionally', 'partly', 'scarcely', 'slightly', ...
                     'somewhat', 'sort of', 'sorta', 'sortof', 'sort-of', 'worst', 'stupid', 'awful', 'horrible', ...
-                    'ridiculous', 'bad', 'waste', 'garbage', 'lack'};
+                    'ridiculous', 'bad', 'waste', 'garbage', 'lack', 'dumb'};
 
     % use .contains to score from the positive list
     if sentence.contains(posWordsList)
@@ -44,7 +44,7 @@ function [posScore, compScore, neutScore, negScore] = vader_analyzer_matlab(sent
     posScore = normalize_score(posScore, 15);
     negScore = normalize_score(negScore, 15);
 
-    if posScore > negScore
+    if abs(posScore) > abs(negScore)
         disp('The given sentence has an overall positive sentiment');
     else
         disp('The given sentence has an overall negative sentiment');
@@ -64,10 +64,12 @@ function [posScore, compScore, neutScore, negScore] = vader_analyzer_matlab(sent
         % Keep the scores between -1 and 1
         if score > 1
             score = 1;
-        else if score < -1
+        elseif score < -1
             score = -1;
         else
             score = score;
+        end
+        
     end
 
 end
