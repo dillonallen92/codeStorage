@@ -1,0 +1,13 @@
+clear, clc, close all;
+
+fieldnames = {'Name', 'Symbol', 'Atomic_Number', 'Atomic_Mass'};
+Atomic_Celery = {'Carbon', 'C', 6, 12.01; ...
+                 'Helium', 'He', 2, 4.003; ...
+                 'Hydrogen', 'H',1, 1.008; ...
+                 'Nitrogen', 'N', 7, 14.007; ...
+                 'Oxygen', 'O', 8, 15.999;
+                 'Sodium', 'Na', 11, 22.990;
+                 'Chlorine', 'Cl', 17, 35.453;};
+
+fprintf('The atomic mass of sodium is %3.3f\n', Atomic_Celery{7,4});
+
