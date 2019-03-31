@@ -1,8 +1,7 @@
 % PROJECT 2
 % Dillon Allen
 % Goal: Design a class that allows the user to create a signal and implement 
-% a low-pass, high-pass and bandpass filter. Allow the user to generate a signal 
-% as well. Plot all results.
+% a low-pass, high-pass and bandpass filter. Plot all results.
 
 classdef generateSignal
     properties
