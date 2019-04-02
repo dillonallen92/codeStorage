@@ -20,6 +20,8 @@ classdef imageClass
         % I_NOISE = []; % saving this for later, maybe
         I_BLUR_NOISE = [];
         I_WNR3 = [];
+        I_GRAY = [];
+        I_EDGE = [];
     end
 
     methods
@@ -84,9 +86,28 @@ classdef imageClass
             myImg.I_BLUR_NOISE = imnoise(myImg.I_BLUR, 'gaussian', myImg.noise_mean, myImg.noise_var);
         end
 
+        % Testing random grayscaling/edge detection stuff
+        function myImg = edge_detection(varargin)
+            % First greyscale the image (recommended on matlab docs)
+            % This function takes up to 2 arguments (for now), img and method
+            myImg = varargin{1};
+
+            myImg.I_GRAY = rgb2gray(myImg.I);
+
+            % Now apply a filter and show it, based on number of arguments
+            if nargin == 2
+                method = varargin{2};
+                myImg.I_EDGE = edge(myImg.I_GRAY, method);
+            else
+                myImg.I_EDGE = edge(myImg.I_GRAY, 'Canny');
+            end
+            
+            imshow(myImg.I_EDGE);
+        end
+
         % Display everything
         function disp_all(myImg)
-            
+
             % Rename these to make conditionals less packed
             bs = sum(myImg.I_BLUR);
             bns = sum(myImg.I_BLUR_NOISE);
@@ -128,6 +149,21 @@ classdef imageClass
                 disp("Not sure what you want, here is just the original image");
                 imshow(myImg.I);
             end
+        end
+
+        % Function to clear everything (basically reset to base constructor)
+        function myImg = clear_all(myImg)
+            I = [];
+            img = [];
+            noise_mean = 0;
+            noise_var = 0;
+            est_nsr = 0;
+            I_PSF = [];
+            I_BLUR = [];
+            I_BLUR_NOISE = [];
+            I_WNR3 = [];
+            I_GRAY = [];
+            I_EDGE = [];
         end
 
     end
