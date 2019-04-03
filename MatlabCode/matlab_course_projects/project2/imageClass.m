@@ -5,11 +5,11 @@ classdef imageClass
     % Instantiate an image as an object of this function.
     % We can add motion_blur to the image, noise, and deblur the results.
     % Properties cover my image I (matrix of doubles), img (path)
-    % mean of gaussian noise, variance of gassian noise, estimated 
-    % noise to signal ratio (nsr), Point Spread Function (PSF), 
+    % mean of gaussian noise, variance of gassian noise, estimated
+    % noise to signal ratio (nsr), Point Spread Function (PSF),
     % Blurred image matrix I_BLUR, blurred with noise matrix I_BLUR_NOISE
     % and the matrix resulting from the WNR (Wiener) filter
-    properties 
+    properties
         I = [];
         img = [];
         noise_mean = 0;
@@ -27,7 +27,7 @@ classdef imageClass
     methods
 
         % Constructor method to just get the image and matrix of doubles
-        function myImg = imageClass(imgPath)
+        function myImg = set.I(myImg, imgPath)
             myImg.img = imgPath;
             myImg.I = im2double(imread(myImg.img));
         end
@@ -76,7 +76,7 @@ classdef imageClass
             imshow(myImg.I_WNR3);
         end
 
-        % Blur and noise all in one incase that is what you want 
+        % Blur and noise all in one incase that is what you want
         function myImg = motion_blur_noise(myImg, len, angle, noise_mean, noise_var)
             myImg.I_PSF = fspecial('motion', len, angle);
             blurred = imfilter(myImg.I, myImg.I_PSF, 'conv', 'circular');
@@ -109,7 +109,7 @@ classdef imageClass
             end
 
             % TODO: Fix error in this statement, somewhere matrix dimensions don't agree
-            
+
             % if nargin == 4
               %  method = varargin{2};
                % thresh = varargin{3};
@@ -137,7 +137,7 @@ classdef imageClass
                 %   disp('Not sure what to do here');
                 % end
             % end
-            
+
             imshow(myImg.I_EDGE);
         end
 
@@ -203,5 +203,5 @@ classdef imageClass
         end
 
     end
-    
+
 end
