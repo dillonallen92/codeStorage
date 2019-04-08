@@ -107,36 +107,6 @@ classdef imageClass
                 thresh = varargin{3};
                 myImg.I_EDGE = edge(myImg.I_GRAY, method, thresh);
             end
-
-            % TODO: Fix error in this statement, somewhere matrix dimensions don't agree
-            
-            % if nargin == 4
-              %  method = varargin{2};
-               % thresh = varargin{3};
-                % if method == 'Sobel' | method == 'Prewitt' | method == 'Roberts'
-                  %  dir = varargin{4};
-                   % if method == 'Sobel' | method == 'Prewitt'
-                    %    if dir ~= 'both' | dir ~= 'horizontal' | dir ~= 'vertical'
-                     %       disp('You did not input a valid Sobel direction');
-                      %  else
-                       %     myImg.I_EDGE = edge(myImg.I_GRAY, method, thresh, dir)
-                        % end
-                    % elseif method == 'Roberts'
-                      %  if dir ~= 'horizonal' | dir ~= 'vertical'
-                       %     disp('This isnt a valid Prewitt direction');
-                        % else
-                          %  myImg.I_EDGE = edge(myImg.I_GRAY, method, thresh, dir);
-                        % end
-                    % else
-                      %  disp('No idea what to do');
-                    % end
-                % elseif method == 'log' | method == 'Canny'
-                  %  sigma = varargin{4};
-                   % myImg.I_EDGE = edge(myImg.I_GRAY, method, thresh, sigma);
-                % else
-                %   disp('Not sure what to do here');
-                % end
-            % end
             
             imshow(myImg.I_EDGE);
         end
