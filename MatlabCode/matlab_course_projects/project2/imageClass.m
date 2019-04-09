@@ -17,7 +17,6 @@ classdef imageClass
         est_nsr = 0;
         I_PSF = [];
         I_BLUR = [];
-        % I_NOISE = []; % saving this for later, maybe
         I_BLUR_NOISE = [];
         I_WNR3 = [];
         I_GRAY = [];
@@ -107,14 +106,16 @@ classdef imageClass
                 thresh = varargin{3};
                 myImg.I_EDGE = edge(myImg.I_GRAY, method, thresh);
             end
-            
+
             imshow(myImg.I_EDGE);
         end
 
         % Display everything
         function disp_all(myImg)
 
-            % Rename these to make conditionals less packed
+            % Renamed these sums to make conditionals less packed
+            % I am using sums to check to see if the image exists
+            % Cannot think of any edge cases where this wouldn't work
             bs = sum(myImg.I_BLUR);
             bns = sum(myImg.I_BLUR_NOISE);
             wnr3s = sum(myImg.I_WNR3);
@@ -135,25 +136,34 @@ classdef imageClass
             elseif bs ~= 0 & bns ~= 0
                 subplot(1,3,1);
                 imshow(myImg.I);
+                title('Original Image');
                 subplot(1,3,2);
                 imshow(myImg.I_BLUR);
+                title('Blurred Image');
                 subplot(1,3,3);
                 imshow(myImg.I_BLUR_NOISE);
+                title('Blurred with Gaussian Noise');
             elseif bs ~= 0 & wnr3s ~= 0
                 subplot(131);
                 imshow(myImg.I);
+                title('Original Image');
                 subplot(132);
                 imshow(myImg.I_BLUR);
+                title('Blurred Image');
                 subplot(133);
                 imshow(myImg.I_WNR3);
+                title('WNR3 Filter Applied');
             elseif bs ~= 0
                 subplot(1,2,1);
                 imshow(myImg.I);
+                title('Original Image');
                 subplot(1,2,2);
                 imshow(myImg.I_BLUR);
+                title('Blurred Image');
             else
                 disp("Not sure what you want, here is just the original image");
                 imshow(myImg.I);
+                title('Original Image');
             end
         end
 
