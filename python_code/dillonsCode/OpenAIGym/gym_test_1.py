@@ -1,3 +1,5 @@
+# Online Example from a Medium Article to play around with Gym
+
 import numpy as np
 import gym
 import matplotlib.pyplot as plt
