@@ -35,8 +35,10 @@ class CanvasApp(App):
         self.box = BoxLayout(orientation='horizontal', spacing=20)
         self.image1 = Image()
         self.image1.source = 'funnycat.jpg'
-        self.box.add_widget(self.image1)
-        
+        # self.box.add_widget(self.image1)
+        self.texture = self.image1.texture
+        self.box.add_widget(self.texture)
+
         return self.box
         # return Builder.load_string(kvWidget)
    
