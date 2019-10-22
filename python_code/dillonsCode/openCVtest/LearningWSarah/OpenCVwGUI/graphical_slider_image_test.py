@@ -27,10 +27,12 @@ fig.subplots_adjust(left=0.25, bottom=0.25)
 ax.imshow(img)
 ax.set_xticks([])
 ax.set_yticks([])
+ax.set_title("Original Image")
 # add the first image again (since initially there should be no filtering)
 ax2.imshow(img)
 ax2.set_xticks([])
 ax2.set_yticks([])
+ax2.set_title("Blurred Image")
 
 # Add a slider for our blurring Kernel
 
@@ -44,7 +46,7 @@ def sliders_on_changed(val):
     # Have to cast the slider value as an int to properly calculate the kernel
     ax2.imshow(blurred_image((int)(kernel_slider.val)))
     fig.canvas.draw_idle()
-    
+
 kernel_slider.on_changed(sliders_on_changed)
 
 # Add a button for resetting the parameters
