@@ -97,11 +97,12 @@ def plotImages(image1, image2="", image3="", image4=""):
     return fig
 
 
-def addSlider(target, sliderName, startPoint, endPoint):
+def addSlider(fig, target, sliderName, startPoint, endPoint, on_change_type=""):
+    
     if target == "image1" or target == "image 1" or target == "img1":
         try:
             image1_slider_ax = fig.add_axes([0.25, 0.15, 0.65, 0.03])
             image1_slider = Slider(image1_slider_ax, sliderName, startPoint, endPoint)
-            image1_slider.on_changed()
+            
         except:
             print("Fig is probably not defined.")
