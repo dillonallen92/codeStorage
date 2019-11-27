@@ -12,7 +12,16 @@ print(len(data_at_4th_octave))
 
 notes_at_4th_octave = data_at_4th_octave['note_sharp']
 freq_at_4th_octave = data_at_4th_octave['hertz']
-print(freq_at_4th_octave)
+print(freq_at_4th_octave[:1])
 
+count = 0
+notesDict = {}
 for freq in freq_at_4th_octave:
-    winsound.Beep(round(freq), 3000)
+    print(notes_at_4th_octave.iloc[count])
+    print(freq)
+    notesDict[notes_at_4th_octave.iloc[count]] = freq
+    count = count + 1
+    #winsound.Beep(round(freq), 2000)
+
+# dictionary of all sharp values
+print(notesDict)
