@@ -21,10 +21,5 @@ import time
 from selenium.webdriver import Chrome
 
 browser = Chrome('./driver/chromedriver.exe')  # Optional argument, if not specified will search path.
-browser.get('http://www.google.com/');
-time.sleep(5) # Let the user actually see something!
-search_box = browser.find_element_by_name('q')
-search_box.send_keys('ChromeDriver')
-search_box.submit()
-time.sleep(5) # Let the user actually see something!
-browser.close()
+browser.get('https://www.soccer24.com/england/premier-league/results/')
+browser.find_element_by_class_name('event--results')
