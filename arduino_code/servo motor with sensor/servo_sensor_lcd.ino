@@ -1,12 +1,15 @@
-#include <Servo.h>
+// The commented code can be uncommented to use servo motor
+// uncommented code is the ultrasonic sensor and LCD display
+
+//#include <Servo.h>
 #include <LiquidCrystal.h>
 
 const int rs = 12, en = 6, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 int time = 0;
 
-Servo myservo; // Instantiate the servo object
-int inputPin = 9;
+//Servo myservo; // Instantiate the servo object
+//int inputPin = 9;
 
 const int trigPin = 10;
 const int echoPin = 11;
@@ -21,14 +24,14 @@ void setup()
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
   Serial.begin(9600); //baud rate for serial monitor debugging
-  myservo.attach(inputPin);
-  myservo.write(0); // Initialize at 0 degrees
+  //myservo.attach(inputPin);
+  //myservo.write(0); // Initialize at 0 degrees
   delay(1000);
 }
 
 void loop() 
 {
-
+  // ultrasonic sensor code
   digitalWrite(trigPin, LOW);
   delay(2); // 2 ms delay
 
@@ -45,7 +48,7 @@ void loop()
   printToScreen(distance);
   
   // If the sensor is more than 20 cm away from an object, keep moving forward
-
+  /* Servo operation code
   if (distance >= 20)
   {
     runServoForward();
@@ -56,9 +59,10 @@ void loop()
   {
     runServoBackwards();
   }
-  
+  */
 }
 
+/* Servo functions
 void runServoForward()
 {
   myservo.write(15);
@@ -90,7 +94,9 @@ void runServoBackwards()
   myservo.write(15);
   delay(10);
 }
+*/
 
+// Ultrasonic Sensor Data to LCD screen function
 void printToScreen(int distance)
 {
   lcd.setCursor(1,1);
