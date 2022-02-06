@@ -2,15 +2,36 @@
 
 // they will work with methods (functions) and fields
 
+// Vehicle is the super class
 class Vehicle {
   
   // random methods
-  drive() : void {
+  public drive() : void {
     console.log('chugga chugga');
+  }
+
+  public honk() : void {
+    console.log("Beep beep");
   }
 }
 
-const vehicle = new Vehicle();
+// create a second class, for inheritence (using extends)
+// since this extends, car is a child class
+class Car extends Vehicle{
 
-// now we have access to the methods inside of Vehicle
-vehicle.drive();
+  // we can override methods now, by using the same name with implementation
+  drive() : void {
+    console.log("Now I am driving a car (chugga chugga part 2)");
+  }
+  
+  // although drive is now private, this public function can access because its in the same class
+  public startDrivingProcess() : void {
+    this.drive();
+  }
+
+}
+
+const car = new Car();
+
+car.startDrivingProcess();
+car.honk();
