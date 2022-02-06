@@ -4,16 +4,32 @@
 
 // Vehicle is the super class
 class Vehicle {
-  
+  // properties with actual values
+  // color : string;
+
+  // // constructor
+  // constructor(color : string)
+  // {
+  //   this.color = color;
+  // }
+
+  // constructor with color defined inside
+  constructor(public color: string)
+  {
+  }
+
   // random methods
   public drive() : void {
     console.log('chugga chugga');
   }
 
-  public honk() : void {
+  protected honk() : void {
     console.log("Beep beep");
   }
 }
+
+const vehicle = new Vehicle('orange');
+console.log(vehicle.color);
 
 // create a second class, for inheritence (using extends)
 // since this extends, car is a child class
@@ -27,11 +43,12 @@ class Car extends Vehicle{
   // although drive is now private, this public function can access because its in the same class
   public startDrivingProcess() : void {
     this.drive();
+    this.honk(); // if private, we cannot call this... protected works though
   }
 
 }
 
-const car = new Car();
+// const car = new Car();
 
-car.startDrivingProcess();
-car.honk();
+// car.startDrivingProcess();
+// car.honk();
