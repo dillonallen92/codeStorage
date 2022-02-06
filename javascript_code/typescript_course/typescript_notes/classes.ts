@@ -35,6 +35,11 @@ console.log(vehicle.color);
 // since this extends, car is a child class
 class Car extends Vehicle{
 
+  constructor(public wheels: number, color: string)
+  {
+    super(color); // refernence to the constructor in the parent, must pass in color
+  }
+
   // we can override methods now, by using the same name with implementation
   drive() : void {
     console.log("Now I am driving a car (chugga chugga part 2)");
@@ -48,7 +53,7 @@ class Car extends Vehicle{
 
 }
 
-// const car = new Car();
+const car = new Car(4,'red');
 
 // car.startDrivingProcess();
 // car.honk();
