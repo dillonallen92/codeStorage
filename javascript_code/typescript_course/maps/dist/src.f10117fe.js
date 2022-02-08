@@ -24735,16 +24735,24 @@ function () {
         lng: 0
       }
     });
-  } // take in a user as an argument and add to map
-
+  }
 
   CustomMap.prototype.add_marker = function (mappable) {
-    new google.maps.Marker({
+    var _this = this;
+
+    var marker = new google.maps.Marker({
       map: this.google_map,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    }); // add event listener here
+
+    marker.addListener('click', function () {
+      var info_window = new google.maps.InfoWindow({
+        content: 'Hello there!'
+      });
+      info_window.open(_this.google_map, marker);
     });
   };
 
@@ -24800,7 +24808,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53569" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56089" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
