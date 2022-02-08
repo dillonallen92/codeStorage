@@ -1,6 +1,11 @@
-// The point of this class file is to abstract and protect the Google Map call
-import { User } from "./User";
-import { Company } from "./Company";
+// instructions to all classes on how to be the proper argument to be
+// marked on the map
+interface Mappable {
+  location : {
+    lat: number,
+    lng: number
+  };
+}
 
 export class CustomMap {
   private google_map: google.maps.Map;
@@ -15,24 +20,13 @@ export class CustomMap {
     });
   }
 
-  // take in a user as an argument and add to map
-  add_user_marker(user : User) {
+  add_marker(mappable : Mappable) : void {
     new google.maps.Marker({
       map: this.google_map,
       position:{
-        lat: user.location.lat,
-        lng: user.location.lng
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
       }
     });
-  }
-
-  add_company_marker(company : Company) {
-    new google.maps.Marker({
-      map: this.google_map,
-      position: {
-        lat: company.location.lat,
-        lng: company.location.lng
-      }
-    })
   }
 }

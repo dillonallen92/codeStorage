@@ -24738,22 +24738,12 @@ function () {
   } // take in a user as an argument and add to map
 
 
-  CustomMap.prototype.add_user_marker = function (user) {
+  CustomMap.prototype.add_marker = function (mappable) {
     new google.maps.Marker({
       map: this.google_map,
       position: {
-        lat: user.location.lat,
-        lng: user.location.lng
-      }
-    });
-  };
-
-  CustomMap.prototype.add_company_marker = function (company) {
-    new google.maps.Marker({
-      map: this.google_map,
-      position: {
-        lat: company.location.lat,
-        lng: company.location.lng
+        lat: mappable.location.lat,
+        lng: mappable.location.lng
       }
     });
   };
@@ -24779,8 +24769,8 @@ var CustomMap_1 = require("./CustomMap"); // create the user and company objects
 var user = new User_1.User();
 var company = new Company_1.Company();
 var custom_map = new CustomMap_1.CustomMap('map');
-custom_map.add_user_marker(user);
-custom_map.add_company_marker(company); // now we can hide some functionality, in order to protect our app from 
+custom_map.add_marker(user);
+custom_map.add_marker(company); // now we can hide some functionality, in order to protect our app from 
 // a new engineer to use functions they dont fully understand
 },{"./User":"src/User.ts","./Company":"src/Company.ts","./CustomMap":"src/CustomMap.ts"}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -24810,7 +24800,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50361" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53569" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
