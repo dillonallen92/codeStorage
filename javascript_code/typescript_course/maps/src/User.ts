@@ -4,14 +4,17 @@
 
 // import the faker module (the course uses the deleted repo, so now it is in @faker-js/faker)
 import faker from '@faker-js/faker';
+import { Mappable } from './CustomMap';
 
-export class User {
+export class User implements Mappable{
   // two properties
   name: string;
   location: {
     lat: number;
     lng: number;
   };
+
+  color: string;
 
 
   constructor() {
@@ -20,6 +23,11 @@ export class User {
       lat: parseFloat(faker.address.latitude()),
       lng: parseFloat(faker.address.longitude())
     };
+    this.color = 'red';
+  }
+
+  marker_content() : string {
+    return `Name: ${this.name}`;
   }
 
 }

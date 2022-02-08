@@ -1,10 +1,15 @@
 // instructions to all classes on how to be the proper argument to be
 // marked on the map
-interface Mappable {
+export interface Mappable {
   location : {
     lat: number,
     lng: number
   };
+  color: string;
+
+  // require any object coming in to have a marker content method
+  // in their class
+  marker_content() : string;
 }
 
 export class CustomMap {
@@ -32,7 +37,7 @@ export class CustomMap {
     // add event listener here
     marker.addListener('click', () =>{
       const info_window = new google.maps.InfoWindow({
-        content: 'Hello there!'
+        content: mappable.marker_content()
       });
 
       info_window.open(this.google_map, marker);
