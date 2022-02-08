@@ -6,8 +6,10 @@ import { CustomMap } from './CustomMap';
 // create the user and company objects
 const user = new User();
 const company = new Company();
-const custom_map= new CustomMap();
+const custom_map= new CustomMap('map');
 
+custom_map.add_user_marker(user);
+custom_map.add_company_marker(company);
 
 
 

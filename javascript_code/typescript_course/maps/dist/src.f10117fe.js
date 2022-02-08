@@ -24717,7 +24717,7 @@ function () {
 exports.Company = Company;
 ;
 },{"@faker-js/faker":"node_modules/@faker-js/faker/dist/esm/index.js"}],"src/CustomMap.ts":[function(require,module,exports) {
-"use strict"; // The point of this class file is to abstract and protect the Google Map call
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -24727,15 +24727,36 @@ exports.CustomMap = void 0;
 var CustomMap =
 /** @class */
 function () {
-  function CustomMap() {
-    this.google_map = new google.maps.Map(document.getElementById('map'), {
+  function CustomMap(divID) {
+    this.google_map = new google.maps.Map(document.getElementById(divID), {
       zoom: 1,
       center: {
         lat: 0,
         lng: 0
       }
     });
-  }
+  } // take in a user as an argument and add to map
+
+
+  CustomMap.prototype.add_user_marker = function (user) {
+    new google.maps.Marker({
+      map: this.google_map,
+      position: {
+        lat: user.location.lat,
+        lng: user.location.lng
+      }
+    });
+  };
+
+  CustomMap.prototype.add_company_marker = function (company) {
+    new google.maps.Marker({
+      map: this.google_map,
+      position: {
+        lat: company.location.lat,
+        lng: company.location.lng
+      }
+    });
+  };
 
   return CustomMap;
 }();
@@ -24757,7 +24778,9 @@ var CustomMap_1 = require("./CustomMap"); // create the user and company objects
 
 var user = new User_1.User();
 var company = new Company_1.Company();
-var custom_map = new CustomMap_1.CustomMap(); // now we can hide some functionality, in order to protect our app from 
+var custom_map = new CustomMap_1.CustomMap('map');
+custom_map.add_user_marker(user);
+custom_map.add_company_marker(company); // now we can hide some functionality, in order to protect our app from 
 // a new engineer to use functions they dont fully understand
 },{"./User":"src/User.ts","./Company":"src/Company.ts","./CustomMap":"src/CustomMap.ts"}],"../../../../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -24787,7 +24810,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62694" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50361" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
