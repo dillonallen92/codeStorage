@@ -27,6 +27,10 @@ class Sorter {
             this.collection[j+1] = temp; 
           }
         }
+        if (typeof this.collection === 'string')
+        {
+          
+        }
       }
     }
   }
