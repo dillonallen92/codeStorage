@@ -1,0 +1,33 @@
+html, body, #root{
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.todo {
+  list-style-type: none;
+  font-weight: bold;
+  display: flex;
+}
+
+.todo-container {
+  width: 200px;
+  text-align: center;
+}
+
+ul {
+  padding: 0;
+}
+
+.spacer{
+  flex:1;
+}
+
+.todo input[type="checkbox"] {
+  margin-right: 1.5rem;
+}
