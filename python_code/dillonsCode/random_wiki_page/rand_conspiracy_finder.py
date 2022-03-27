@@ -2,9 +2,54 @@
 import webbrowser
 from bs4 import BeautifulSoup
 import requests
-import random 
+import random
+import smtplib, ssl
+import csv
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
-def generateRandomConspiracy():
+def sendConspiracyEmail(messageText):
+  port = 465
+
+  # grab emails from list
+  with open('email_list.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+    linecount = 0 
+    for row in csv_reader:
+      if linecount == 0:
+        linecount += 1
+      elif linecount == 1:
+        personal_email = row[1]
+        personal_password = row[2]
+        linecount += 1
+      elif linecount == 2:
+        target_email = row[1]
+        linecount +=1
+      else:
+        break
+  
+  # create secure ssl context
+  context = ssl.create_default_context()
+
+  message = MIMEMultipart("alternative")
+  message["Subject"] = "Hello fren!"
+  message["From"]    = personal_email
+  message["To"]      = target_email
+
+  text = messageText
+
+  part1 = MIMEText(text, "plain")
+
+  message.attach(part1)
+  
+  # log in to the email account
+  with smtplib.SMTP_SSL("smtp.gmail.com", port, context=context) as server:
+    server.login(personal_email, personal_password)
+    server.sendmail(personal_email, personal_email, message.as_string())
+    
+
+
+def generateRandomConspiracy(massSpam = 'n'):
 
   # helper function
   def isBadKeyword(inputStr, badKeywordList):
@@ -47,15 +92,34 @@ def generateRandomConspiracy():
   random_webpage = wikiURL + webpath_list[random_index]
 
   # now open the webpage
-  webbrowser.open_new_tab(random_webpage)
-
+  if massSpam == 'y':
+    return webpath_list
+  else:
+    # now open the webpage
+    webbrowser.open_new_tab(random_webpage)
+    return random_webpage
 
 if __name__ == '__main__':
   exitCode = 0
   while not exitCode:
     user_choice = str(input('Would you like to generate a random conspiracy wiki article? (y/n) '))
     if user_choice.lower() == 'y':
-      generateRandomConspiracy()
+      emailQuestion = str(input("""Would you like to:
+                                   view (v) your conspiracy,
+                                   send as an email (e)
+                                   or mass spam them? (v/e/ms)
+                                   -- for mass email, ctrl+c to stop --
+                                   """))
+      if emailQuestion.lower() == 'v':
+        _ = generateRandomConspiracy()
+      elif emailQuestion.lower() == 'e':
+        sendConspiracyEmail(generateRandomConspiracy())
+      elif emailQuestion.lower() == 'ms':
+        listOfConspiracies = generateRandomConspiracy(massSpam = 'y')
+        for ct in listOfConspiracies:
+          sendConspiracyEmail(ct)
+      else:
+        'Did not understand...'
     else:
       print("Exiting now...")
       exitCode = 1
