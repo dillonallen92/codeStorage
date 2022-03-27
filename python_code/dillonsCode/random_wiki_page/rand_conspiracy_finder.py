@@ -93,6 +93,8 @@ def generateRandomConspiracy(massSpam = 'n'):
 
   # now open the webpage
   if massSpam == 'y':
+    for i in range(0,len(webpath_list)):
+      webpath_list[i] = wikiURL + webpath_list[i]
     return webpath_list
   else:
     # now open the webpage
