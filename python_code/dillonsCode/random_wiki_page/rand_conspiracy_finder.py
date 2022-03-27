@@ -47,8 +47,6 @@ def sendConspiracyEmail(messageText):
     server.login(personal_email, personal_password)
     server.sendmail(personal_email, personal_email, message.as_string())
     
-
-
 def generateRandomConspiracy(massSpam = 'n'):
 
   # helper function
